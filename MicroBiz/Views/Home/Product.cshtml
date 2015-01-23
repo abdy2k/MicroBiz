@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MicroBiz.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Product listing</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <td colspan="4" align="right">
+            <a href="Cart" title="go to shopping cart"><i class="glyphicon glyphicon-shopping-cart"></i> <b>@ViewData["qty"]</b> items, <b>@ViewData["price"]</b></a>
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Action("GetImg", "Home", new { id = item.Id })" alt="@item.Name" width="100" height="100" />
+            </td>
+            <td>
+                <b>@Html.DisplayFor(modelItem => item.Name)</b><br />
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td align="right">
+                @Html.ActionLink("Add to cart", "AddToCart", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" align="right">
+            <a href="Cart" title="go to shopping cart"><i class="glyphicon glyphicon-shopping-cart"></i> <b>@ViewData["qty"]</b> items, <b>@ViewData["price"]</b></a>
+        </td>
+    </tr>
+</table>

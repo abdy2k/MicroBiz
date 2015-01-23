@@ -70,4 +70,24 @@ namespace MicroBiz
         [DataType(DataType.Upload)]
         public HttpPostedFileBase ImageUpload { get; set; }
     }
+    public class Cart
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        public string SessionId { get; set; }
+
+        [Required]
+        public int ProductId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
+        public float? Price { get; set; }
+
+        public int Qty { get; set; }
+    }
 }
