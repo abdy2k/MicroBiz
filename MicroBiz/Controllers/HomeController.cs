@@ -54,16 +54,6 @@ namespace MicroBiz.Controllers
             var products = db.Products;
             foreach (Product product in products)
             {
-                /*
-                var model = new Product
-                {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Description = product.Description,
-                    Price = product.Price
-                };
-                */
-
                 ProductViewModels.Add(product);
             }
 
@@ -110,7 +100,7 @@ namespace MicroBiz.Controllers
             myCart.Add(product);
             TempData["myCart"] = myCart;
 
-            return RedirectToAction("Products", "Home");
+            return RedirectToAction("Product", "Home");
         }
         public ActionResult Cart()
         {
